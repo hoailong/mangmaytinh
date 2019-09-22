@@ -1,0 +1,140 @@
+.graph {
+  overflow: scroll;
+  text-align: center;
+}
+
+.table th,
+.table td {
+  text-align: center;
+}
+
+.ibox {
+  border: 2px solid #000;
+  border-radius: 5px;
+}
+
+.ibox-title {
+  border-style: none;
+}
+
+.input-content {
+  padding: 20px 35px;
+}
+
+.input-content textarea {
+  border: none;
+  letter-spacing: 3px;
+}
+
+.input-content span {
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+.input-content .form-group {
+  margin-bottom: 3px;
+}
+
+.current {
+  background: #d00303 !important;
+  color: white;
+}
+
+svg {
+  font-family: "Courier New", Courier, monospace;
+}
+
+#node,
+#edge {
+  resize: none;
+  line-height: 20px;
+  padding-left: 35px;
+  background-image: url(../img/line.png);
+}
+
+#dijkstra-table thead th,
+#bellman-ford-table th:nth-child(1) {
+  cursor: pointer;
+}
+
+#dijkstra-table thead th:hover,
+#bellman-ford-table th:nth-child(1):hover {
+  background: #da8787;
+  color: #fff;
+}
+
+.btn-sm {
+  padding: 1px 7px;
+}
+
+.tooltip-demo i {
+  cursor: pointer;
+}
+
+.parity-bit {
+  font-weight: bold;
+  color: red;
+}
+
+#hamming-code-table tfoot td {
+  background: #6cb4ff;
+  color: #fff;
+  font-weight: bold;
+}
+
+.hamming-content {
+  padding: 20px 30px;
+}
+
+.hamming-content input {
+  letter-spacing: 2px;
+}
+
+.form-control[readonly] {
+  background-color: #fff;
+}
+
+#fix-div {
+  position: fixed;
+  bottom: 50px;
+  right: 10px;
+}
+
+#calModal .btn {
+  border-radius: 0px;
+}
+
+.i-checks label {
+  margin-right: 30px;
+  margin-bottom: 15px;
+}
+
+#subnet-table tr td,
+#subnet-table tr th,
+#inforIP-table tr td,
+#inforIP-table tr th {
+  text-align: left;
+  font-size: 15px;
+}
+#btn-detail{
+  margin-bottom: 2px;
+}
+.devide {
+  color: blue;
+  cursor: pointer;
+}
+.devide:hover {
+  color: red;
+}
+.disable {
+  color: #ccc !important;
+  cursor: default !important;
+}
+.disable:hover {
+  color: #ccc !important;
+}
+.error {
+  font-weight: bold;
+  color: white;
+  background: red;
+}

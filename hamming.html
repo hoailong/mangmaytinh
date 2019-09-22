@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Thuật toán Hamming - Mạng máy tính</title>
+
+  <link rel="shortcut icon" type="image/x-icon" href="img/ninja-coder.png">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+  <!-- Toastr style -->
+  <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+  <link href="css/animate.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/mystyle.css" rel="stylesheet">
+
+</head>
+
+<body class="">
+
+  <div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+      <div class="sidebar-collapse">
+        <ul class="nav metismenu tooltip-demo" id="side-menu">
+          <li class="nav-header">
+            <div class="dropdown profile-element">
+              <span>
+                <img alt="image" class="img-circle" src="img/profile_small.jpg" style="height:48px">
+              </span>
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Phan Văn Hoài</strong>
+                  </span> <span class="text-muted text-xs block">IT1 - K58 <b class="caret"></b></span> </span> </a>
+              <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                <li><a href="#">Coppy code nhớ ghi nguồn :)</a></li>
+              </ul>
+            </div>
+            <div class="logo-element">
+              <span>
+                <img alt="image" class="img-circle" src="img/profile_small.jpg" style="height:48px">
+              </span>
+            </div>
+          </li>
+          <li>
+            <a href="index.html" data-toggle="tooltip" data-placement="right" title="Dijkstra - Bellam Ford"><i class="fa fa-paper-plane-o"></i> <span class="nav-label">Dijkstra - Bellam Ford</span></a>
+          </li>
+          <li>
+            <a href="checksum-crc.html" data-toggle="tooltip" data-placement="right" title="UDP Checksum -CRC"><i class="fa fa-bug"></i> <span class="nav-label">UDP Checksum - CRC</span> </a>
+          </li>
+          <li class="active">
+            <a href="hamming.html" data-toggle="tooltip" data-placement="right" title="Hamming"><i class="fa fa-code"></i> <span class="nav-label">Hamming</span> </a>
+          </li>
+          <li>
+            <a href="ipv4.html" data-toggle="tooltip" data-placement="right" title="Chia mạng con IPv4"><i class="fa fa-sitemap"></i> <span class="nav-label">Chia mạng con IPv4</span> </a>
+          </li>
+          <li>
+            <a href="demo-socket.html" data-toggle="tooltip" data-placement="right" title="Demo Socket"><i class="fa fa-bolt"></i> <span class="nav-label">Demo Socket</span> </a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+
+    <div id="page-wrapper" class="white-bg">
+      <div class="row border-bottom">
+        <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+          <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+            <form role="search" class="navbar-form-custom" method="post">
+              <div class="form-group">
+                <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+              </div>
+            </form>
+          </div>
+          <ul class="nav navbar-top-links navbar-right">
+            <li>
+              <a href="#">
+                <i class="fa fa-info-circle"></i> Sản phẩm bài tập lớn môn Mạng máy tính
+              </a>
+            </li>
+          </ul>
+
+        </nav>
+      </div>
+      <br />
+      <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+              <div class="ibox-title">
+                <h5>Tìm mã Hamming của 1 kí tự 8 bit <small></small></h5>
+                <div class="ibox-tools">
+                  <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                  </a>
+                  <a class="close-link">
+                    <i class="fa fa-times"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="ibox-content hamming-content">
+                <div class="row">
+                  <div class="col-sm-4 input-group">
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i> Char</button> </span>
+                    <input type="text" class="form-control" id="txtChar">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 input-group">
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-primary"><i class="fa fa-arrow-right"></i> Hamming Code</button> </span>
+                    <input type="text" class="form-control" id="txtHammingOutput" readonly>
+                  </div>
+                </div>
+                <br />
+                <div class="row table-responsive">
+                  <table class="table table-bordered table-hover" id='hamming-code-table'>
+                    <thead>
+                      <tr>
+                        <th>Thứ tự bit</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                        <th>9</th>
+                        <th>10</th>
+                        <th>11</th>
+                        <th>12</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                    <tfoot>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+              <div class="ibox-title">
+                <h5>Tìm 1 bit lỗi trong mã Hamming của 1 kí tự <small></small></h5>
+                <div class="ibox-tools">
+                  <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                  </a>
+                  <a class="close-link">
+                    <i class="fa fa-times"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="ibox-content hamming-content">
+                <div class="row">
+                  <div class="col-sm-8 input-group">
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i> Hamming Error Code</button> </span>
+                    <input type="number" class="form-control" id="txtHamming">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 input-group">
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-primary"><i class="fa fa-arrow-right"></i> Binary First</button> </span>
+                    <input type="text" class="form-control" id="txtBinary" readonly>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-4 input-group">
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-primary"><i class="fa fa-arrow-right"></i> Original Char</button> </span>
+                    <input type="text" class="form-control" id="txtCharOutput" readonly>
+                  </div>
+                </div>
+                <br />
+                <div class="row table-responsive">
+                  <table class="table table-bordered table-hover" id='hamming-error-table'>
+                    <thead>
+                      <tr>
+                        <th>Thứ tự bit</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                        <th>9</th>
+                        <th>10</th>
+                        <th>11</th>
+                        <th>12</th>
+                        <th>Kiểm chẵn lẻ</th>
+                        <th>Bit chẵn lẻ</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                    <tfoot>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="pull-right">
+          CNTT1 - K58 UTC
+        </div>
+        <div>
+          Copyright by <strong>HoaiPV</strong> &copy; 2019
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="fix-div">
+    <button class="btn btn-primary" id="calculator-btn"><i class="fa fa-expand"></i> Bộ chuyển</button>
+  </div>
+  <div id="calModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content modal-lg">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Bộ chuyển</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Text <i class="fa fa-long-arrow-right"></i> Binary</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="txtTextIn" placeholder="Enter the Text">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-primary" id="btnTextToBinary"><i class="fa fa-long-arrow-right"></i></button>
+              </span>
+              <input type="text" class="form-control" id="txtBinaryOut1" placeholder="Binary Output">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Number <i class="fa fa-long-arrow-right"></i> Binary</label>
+            <div class="input-group">
+              <input type="number" class="form-control" id="txtNumberIn" placeholder="Enter the Number">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-primary" id="btnNumberToBinary"><i class="fa fa-long-arrow-right"></i></button>
+              </span>
+              <input type="text" class="form-control" id="txtBinaryOut2" placeholder="Binary Output">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>IP <i class="fa fa-long-arrow-right"></i> Binary</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="txtIPIn" placeholder="Enter the IP xxx.xxx.xxx.xxx">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-primary" id="btnIPToBinary"><i class="fa fa-long-arrow-right"></i></button>
+              </span>
+              <input type="text" class="form-control" id="txtBinaryOut3" placeholder="Binary Output">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Binary <i class="fa fa-long-arrow-right"></i> Text</label>
+            <div class="input-group">
+              <input type="number" class="form-control" id="txtBinaryIn1" placeholder="Enter the Binary">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-primary" id="btnBinaryToText"><i class="fa fa-long-arrow-right"></i></button>
+              </span>
+              <input type="text" class="form-control" id="txtTextOut" placeholder="Text Output">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Binary <i class="fa fa-long-arrow-right"></i> Number</label>
+            <div class="input-group">
+              <input type="number" class="form-control" id="txtBinaryIn2" placeholder="Enter the Binary">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-primary" id="btnBinaryToNumber"><i class="fa fa-long-arrow-right"></i></button>
+              </span>
+              <input type="text" class="form-control" id="txtNumberOut" placeholder="Number Output">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Binary <i class="fa fa-long-arrow-right"></i> IP</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="txtBinaryIn3" placeholder="Enter the Binary">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-primary" id="btnBinaryToIP"><i class="fa fa-long-arrow-right"></i></button>
+              </span>
+              <input type="text" class="form-control" id="txtIPOut" placeholder="IP Output">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Sum Two Binary</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="txtBinaryIn4" placeholder="Enter the Binary 1">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i></button>
+              </span>
+              <input type="text" class="form-control" id="txtBinaryIn5" placeholder="Enter the Binary 2">
+
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-primary" id="btnSumBinary"><i class="fa fa-play"></i></button>
+              </span>
+              <input type="text" class="form-control" id="txtSumBinary" placeholder="Sum Binary">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mainly scripts -->
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+  <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+  <!-- Custom and plugin javascript -->
+  <script src="js/inspinia.js"></script>
+  <script src="js/plugins/pace/pace.min.js"></script>
+  <!-- Toastr -->
+  <script src="js/plugins/toastr/toastr.min.js"></script>
+  <script src="js/plugins/d3js/d3.v3.min.js" charset="utf-8"></script>
+  <script src="algorithm/calculator.js"></script>
+  <script src="algorithm/hamming.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#txtChar').val('A');
+      hamming_code('A');
+      $('#txtHamming').val('110010100010');
+      hamming_error('110010100010');
+
+      $(document).on('blue paste keyup', '#txtChar', function() {
+        let _char = $(this).val()[$(this).val().length - 1];
+        $(this).val(_char);
+        if (_char && _char !== '') {
+          hamming_code(_char);
+        }
+      })
+
+      $(document).on('blue paste keyup', '#txtHamming', function() {
+        let hamming = $(this).val().trim();
+        if (hamming && hamming.length === 12) {
+          hamming_error(hamming);
+        }
+      })
+    });
+  </script>
+</body>
+
+</html>
